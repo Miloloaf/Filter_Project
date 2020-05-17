@@ -9,18 +9,23 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+:root{
+    --background3: wheat;
+}
+
 .wrapper {
     width: 100%;
     height: auto;
-    background-color: black;
+
 
 }
 
 .grid{
     display: grid;
-    background-color: rgb(58, 58, 58);
-    grid-template-rows: auto 40px 400px 40px;
+    /* background-color: rgb(58, 58, 58); */
+    grid-template-rows: auto 40px 400px auto;
     grid-template-columns: 0.5fr 8fr 1.5fr 1.5fr;
+    grid-auto-rows: auto;
 }
 
 .pseudoItem{
@@ -45,8 +50,9 @@ body{
 
 .navItem{
     font-size: 20px;
-    padding-left: 6em;
-    padding-right: 6em;
+    margin-left: 6em;
+    margin-right: 6em;
+    cursor: pointer;
 }
 
 .contact {
@@ -75,7 +81,7 @@ body{
 #heroImage{
     background-color: rgba(105, 105, 105, 0.253);
     background-image: url("https://images.unsplash.com/photo-1514910440960-0b0fe5b56501?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1281&q=80");
-    background-position: center;
+    background-position: 50% 20%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     align-self: center;
@@ -103,27 +109,164 @@ body{
 
 #aboutUs{
     font-size: 20px;
-    height: 2000px;
+    height: 100%;
+    /* margin-left:00px;
+    margin-right: 400px;
+    min-width: 800px; */
+    width: fit-content;
     grid-column: 1 / span 4;
-    color: whitesmoke;
-    background-color: teal;
+    grid-row: 4;
+    color: rgb(24, 24, 24);
+    background-color: rgb(255, 255, 255);
+    z-index: 0;
 }
 
-#aboutUs .grid{
+#aboutUs .gridAbout{
     display: grid;
     margin-left: 20%;
     margin-right: 20%;
-    background-color: rgb(108, 204, 116);
+    /* to remove */
+    /* background-color: rgba(108, 204, 116, 0.432); */
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr;
+    
 }
 
 .aboutUsTitle{
-    padding-top: 100px;
+    padding-top: 200px;
     text-align: center;
 }
 
 #aboutUs p{
     padding: 20px 0;
     margin: 0 50px;
+}
+
+#aboutUs .findButton{
+    display: block;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 5px 20px ;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+#aboutUs .findButton:hover{
+    color: whitesmoke;
+    background: linear-gradient(to right, #5a492a 0%, wheat 100%)
+
+}
+
+#aboutUsImage {
+    background-image: url(https://cdn.pixabay.com/photo/2015/05/07/15/08/pastries-756601_960_720.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -20px 0px;
+    height: 300px;
+    width: 400px;
+    /* change for about us padding */
+    margin: 120px auto 50px auto;
+    outline: 1px solid rgb(110, 110, 110);
+    padding: 30px 0px;
+    position: relative;
+}
+
+#aboutUsImage #aboutUsImageBorder{
+    position: relative;
+    height: 360px;
+    width: 400px;
+    border: 10px solid black;
+    transition: 1s ease-in-out;
+    margin-top: -15%;
+    margin-left: -30px;
+    z-index: -1;
+}
+#aboutUsImage #aboutUsImageBorder.static{
+    margin-top: -10%;
+    margin-left: -10px;
+}
+
+#ourStore{
+    grid-row: 5;
+    grid-column: 1 / span 4;
+    /* change to edit padding above myStore */
+    padding-top: 80px;
+    height: 100%;
+    background-color: var(--background3);
+}
+
+#ourStoreGrid{
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: auto;
+    justify-items: center;
+    background-color: var(--background3);
+    row-gap: 20px;
+}
+
+#ourStoreHeader{
+    font-size: 30px;
+}
+
+#ourStoreFlex{
+    display: flex;
+    width: 1000px;
+    /* background-color: royalblue; */
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+#ourStoreFlex .foodstuffFilter{
+    border: 2px solid black;
+    padding: 5px;
+    cursor: pointer;
+    width: 120px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#searchBar input{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 20px;
+    border-radius: 5px;
+    padding-left: 1em;
+    padding-right: 1.5em;
+}
+
+.searchIcon{
+    margin-left: -25px;
+}
+
+.backgroundColour3{
+    grid-row: 6;
+    grid-column: 1 / span 4;
+    background-color: var(--background3);
+}
+
+#inventory{
+    display: grid;
+    background-color: royalblue;
+    height: 200px;
+    margin: 40px;
+    margin-left: 20%;
+    margin-right: 20%;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    justify-items: center;
+
+}
+
+.inventoryItemCard{
+
 }
