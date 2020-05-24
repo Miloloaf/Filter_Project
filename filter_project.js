@@ -24,10 +24,39 @@ function removeBorder() {
 function createCard() {
     let inventory = document.getElementById("inventory");
     let item = "item2";
-    div.setAttribute("id", item);
+    div.setAttribute("id", item); //not required to append ID here
+    div.setAttribute("class", "inventoryItemCard")
+    // div.innerHTML = "<div class="inventoryItemCard"> <div class="foodBackground"></div> <div class="foodText"> <div class="foodTextName">Cake Item</div> <div class="foodPrice">£5</div>";
     inventory.appendChild(div);
-    document.getElementById(item).classList.add("inventoryItemCard")
-    document.getElementById(item).classList.add("foodBackground")
+    let inventoryCard = document.getElementById(item)
+    alert(document.getElementById(item).classList);
+    // document.getElementById(item).classList.add("inventoryItemCard")
+    // alert(div)
+    let cardImage = document.createElement("div");
+    cardImage.setAttribute("id", item+"foodBackground")
+    cardImage.setAttribute("class", "foodBackground")
+    inventoryCard.appendChild(cardImage);
+
+    let foodTextContainer = document.createElement("div");
+    let foodTextName = document.createElement("div");
+    let foodPrice = document.createElement("div");
+
+    foodTextContainer.setAttribute("id", item+"foodText");
+    foodTextContainer.setAttribute("class", "foodText");
+
+    foodTextName.setAttribute("id", item+"foodTextName");
+    foodTextName.setAttribute("class", "foodTextName");
+    foodTextName.textContent = "Foo"
+
+    foodPrice.setAttribute("id", item+"foodPrice");
+    foodPrice.setAttribute("class", "foodPrice");
+    foodPrice.textContent = "Bar"
+
+    foodTextContainer.appendChild(foodTextName);
+    foodTextContainer.appendChild(foodPrice);
+    inventoryCard.appendChild(foodTextContainer)
+
+    // alert(document.getElementById(item).classList);
 
 }
 
