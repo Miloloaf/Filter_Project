@@ -1,4 +1,5 @@
 // const aboutUsImg = document.getElementById("aboutUsImage");
+let itemNumber = 2
 
 function Food (url, name, price, x, y, type) {
     this.url = url;
@@ -7,6 +8,8 @@ function Food (url, name, price, x, y, type) {
     this.x = x;
     this.y = y;
     this.type = type;
+    this.number = itemNumber;
+    itemNumber += 1; 
 }
 
 
@@ -26,21 +29,22 @@ function removeBorder() {
 }
 
 function createCard(foodItem) {
-    let foodCard =  document.createElement("div");
     let inventory = document.getElementById("inventory");
-    let item = "item2";
-    foodCard.setAttribute("id", item); //not required to append ID here
+    let item = "item" + toString(foodItem["number"]);
+
+    let foodCard =  document.createElement("div");
+    foodCard.setAttribute("id", item);
     foodCard.setAttribute("class", "inventoryItemCard")
 
     inventory.appendChild(foodCard);
-    let inventoryCard = document.getElementById(item);
+
     let cardImage = document.createElement("div");
 
     cardImage.setAttribute("id", item+"foodBackground")
     cardImage.setAttribute("class", "foodBackground")
     cardImage.setAttribute("foodType", foodItem["type"])
     cardImage.style.backgroundImage = "url("+foodItem["url"]+")"
-    inventoryCard.appendChild(cardImage);
+    foodCard.appendChild(cardImage);
 
     let foodTextContainer = document.createElement("div");
     let foodTextName = document.createElement("div");
@@ -55,15 +59,26 @@ function createCard(foodItem) {
 
     foodPrice.setAttribute("id", item+"foodPrice");
     foodPrice.setAttribute("class", "foodPrice");
-    foodPrice.textContent = foodItem["price"]
+    foodPrice.textContent = foodItem["price"];
 
     foodTextContainer.appendChild(foodTextName);
     foodTextContainer.appendChild(foodPrice);
-    inventoryCard.appendChild(foodTextContainer)
-
-    // alert(document.getElementById(item).classList);
+    foodCard.appendChild(foodTextContainer);
 
 }
+
+function testGridText () {
+    let inventory = document.getElementById("inventory");
+
+    let test = document.createElement("div")
+    test.textContent = "123 Test";
+    test.style.width = "300px";
+    test.style.height ="300px";
+    test.style.backgroundColor = "blue"
+
+    inventory.appendChild(test)
+}
+
 
 function populateInventory() {
     createCard(item2);
