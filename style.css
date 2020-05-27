@@ -255,8 +255,8 @@ body{
 
 #inventory{
     display: grid;
-    background-color: royalblue;
-    height: 400px;
+    /* background-color: royalblue; */
+    height: 100%;
     margin: 40px;
     margin-left: 20%;
     margin-right: 20%;
@@ -264,6 +264,9 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     justify-items: center;
+    column-gap: 20px;
+    row-gap: 20px;
+    transition: 0.5s ease-in-out;
 
 }
 
@@ -279,6 +282,7 @@ body{
     border: 1px solid rgb(105, 105, 105) ;
     height: 300px;
     width: 400px;
+    transition: 0.5s ease-in-out;
 }
 
 .inventoryItemCard .foodText{
