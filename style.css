@@ -234,6 +234,11 @@ body{
     border-radius: 5px;
 }
 
+#ourStoreFlex .foodstuffFilter:hover{
+    color: whitesmoke;
+    background: linear-gradient(to right, #a0792f 0%, rgb(196, 155, 79) 100%)
+}
+
 #searchBar input{
     margin-top: 10px;
     margin-bottom: 20px;
@@ -252,6 +257,7 @@ body{
     grid-column: 1 / span 4;
     background-color: var(--background3);
 }
+
 
 #inventory{
     display: grid;
@@ -274,15 +280,42 @@ body{
 
 }
 
+.inventoryItemCard .foodBGWrapper{
+    height: 300px;
+    width: 400px;
+    border: 1px solid rgb(105, 105, 105) ;
+    overflow: hidden;
+}
+
+.inventoryItemCard .foodBackground:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    background-color: red;
+}
+
 .inventoryItemCard .foodBackground{
     background-image: url("https://images.unsplash.com/photo-1551059429-355bd51f6972?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border: 1px solid rgb(105, 105, 105) ;
-    height: 300px;
-    width: 400px;
-    transition: 0.5s ease-in-out;
+    /* border: 1.5px solid rgb(105, 105, 105) ; */
+    height: 100%;
+    width: 100%;
+    transition: 0.7s ease-in-out;
+}
+
+.inventoryItemCard .foodBackground::before{
+    content: "";
+    background-color: rgba(39, 39, 39, 0.171);
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: none;
+}
+
+.inventoryItemCard .foodBackground:hover::before{
+    display: block;
 }
 
 .inventoryItemCard .foodText{

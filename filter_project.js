@@ -66,13 +66,18 @@ function createCard(foodItem) {
 
     inventory.appendChild(foodCard);
 
+    let cardImageWrapper = document.createElement("div");
     let cardImage = document.createElement("div");
+    
+    cardImageWrapper.setAttribute("id", item+"foodBGWrapper");
+    cardImageWrapper.setAttribute("class", "foodBGWrapper");
+    foodCard.appendChild(cardImageWrapper);
 
     cardImage.setAttribute("id", item+"foodBackground")
     cardImage.setAttribute("class", "foodBackground")
     cardImage.setAttribute("foodType", foodItem["type"])
     cardImage.style.backgroundImage = "url("+foodItem["url"]+")"
-    foodCard.appendChild(cardImage);
+    cardImageWrapper.appendChild(cardImage);
 
     let foodTextContainer = document.createElement("div");
     let foodTextName = document.createElement("div");
@@ -130,10 +135,8 @@ document.getElementById("aboutUsImage").addEventListener("mouseenter", moveBorde
 document.getElementById("aboutUsImage").addEventListener("mouseleave", removeBorder);
 
 
-function addFoodImageEvents () {
-    for (let i = 0; i < foodImages.length; i++){
-    foodImages[i].addEventListener("click", zoomImages )
-}
-
-
-}
+// function addFoodImageEvents () {
+//     for (let i = 0; i < foodImages.length; i++){
+//     foodImages[i].addEventListener("click", zoomImages )
+//     }
+// }
