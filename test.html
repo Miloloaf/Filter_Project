@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .parent{
+            height: 400px;
+            width: 400px;
+            overflow: hidden;
+            background-color: yellow;
+        }
+
+        .parent .child{
+            height: 100%;
+            width: 100%;
+            transition: all 0.5s ease-in-out;
+            background-image: url("https://cdn.pixabay.com/photo/2020/05/17/06/45/butterfly-5180306_960_720.jpg");
+            background-size:cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .parent:hover .child{
+            transform: scale(1.3);
+            /* display: none; */
+        }
+
+
+       .parent .child::before{
+            content: "";
+            display: none;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: whitesmoke;
+            background-color: rgba(59, 59, 59, 0.459);
+
+        }
+
+
+        .parent:hover .child::before{
+            display: block;
+        }
+
+
+
+        span{
+            color:white;
+            /* background-color: yellow; */
+            display: none;
+            transition: 1s ease-in-out;
+            position: relative;
+        }
+
+        .parent:hover span {
+            display: block;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">
+            <span>Hello World</span>
+        </div>
+    </div>
+</body>
+
+<script>
+
+</script>
+</html>
