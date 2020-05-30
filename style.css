@@ -249,7 +249,9 @@ body{
 }
 
 .searchIcon{
-    margin-left: -25px;
+    margin-left: -33px;
+    padding-left: 5px;
+    cursor: pointer;
 }
 
 .backgroundColour3{
@@ -277,7 +279,7 @@ body{
 }
 
 .inventoryItemCard{
-
+    /* transition: 0.1s ease-in-out; */
 }
 
 .inventoryItemCard .foodBGWrapper{

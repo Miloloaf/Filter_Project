@@ -112,6 +112,67 @@ function testGridText () {
     inventory.appendChild(test)
 }
 
+function foodFilter(food) {
+    foodFilterReset();
+    let itemArray = document.getElementsByClassName("inventoryItemCard");
+    fadeInventoryOut();
+    // alert("Test Cookie Click");
+
+    setTimeout(() =>{
+        for (let i = 0; i< itemArray.length; i++){
+            let card = itemArray[i];
+            let foodType = itemArray[i].querySelector(".foodBackground").getAttribute("foodtype");
+            
+            if (foodType != food){
+                card.style.display ="none";
+            }
+        }; }, 200);
+
+    setTimeout(fadeInventoryIn, 200);
+
+}
+
+function foodFilterResetBtn() {
+    foodFilterReset();
+    fadeInventoryOut();
+    setTimeout(fadeInventoryIn, 200);
+}
+
+function foodFilterReset() {
+    let itemArray = document.getElementsByClassName("inventoryItemCard");
+    for (let i = 0; i< itemArray.length; i++){
+        itemArray[i].style.transition = "0s ease-in-out"
+        itemArray[i].style.display = "block";
+    }
+}
+
+function fadeInventoryOut() {
+    let itemArray = document.getElementsByClassName("inventoryItemCard");
+    for (let i = 0; i< itemArray.length; i++){
+        
+
+        setTimeout(() => {
+            itemArray[i].style.transition = "0.5s ease-in-out"}, 100
+        );
+
+        itemArray[i].style.opacity = "0";
+        
+    }
+
+}
+
+function fadeInventoryIn() {
+    let itemArray = document.getElementsByClassName("inventoryItemCard")
+    
+    for (let i = 0; i< itemArray.length; i++){
+        itemArray[i].style.transition = "0.4s ease-in-out"
+        setTimeout(() => {
+            itemArray[i].style.opacity = "1";}, 10
+        );
+    }
+
+}
+
 
 function populateInventory() {
     for (let i = 1; i < itemNumber; i++){
