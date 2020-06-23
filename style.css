@@ -23,19 +23,37 @@ body{
 .grid{
     display: grid;
     /* background-color: rgb(58, 58, 58); */
-    grid-template-rows: auto 40px 400px auto;
-    grid-template-columns: 0.5fr 8fr 1.5fr 1.5fr;
+    grid-template-rows: 70px 40px 400px auto;
+    grid-template-columns: 0.5fr 8.5fr 2fr 1fr;
     grid-auto-rows: auto;
 }
 
-.pseudoItem{
-    background-color: yellow;
-    border: 1px solid black;
+.cartContainer{
+    /* background-color: yellow; */
+    display: flex;
+    padding-top: 20px;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    justify-content: center;
+    align-items: center;
+}
+
+.cart{
+    color: black;
+}
+
+#basketIcon{
+    font-size: 36px;
+}
+
+.cart p{
+    margin-top: 2px;;
 }
 
 #logo {
     width: fit-content;
     grid-column: 1 / 3;
+    align-self: center;
 }
 
 #headerNav{
@@ -48,6 +66,11 @@ body{
     grid-column: 1 / span 4;
 }
 
+#headerNav a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
 .navItem{
     font-size: 20px;
     margin-left: 6em;
@@ -57,7 +80,9 @@ body{
 
 .contact {
     justify-self: end;
-    font-size: 25px;
+    align-self: center;
+    font-size: 22px;
+    /* font-size: 1.4vw; */
     padding-right: 1em;
 }
 
@@ -348,4 +373,81 @@ body{
     height: 300px;
     width: 300px;
     /* background-color: rgb(255, 0, 0); */
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: none;
+    background-color: rgba(0,0,0,0.4);
+}
+
+#modalBackground{
+    /* position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); */
+
+}
+
+.modal-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+    margin: auto;
+}
+
+.modal button{
+    /* display: none; */
+    margin: 10px;
+    padding: 15px;
+    font-size: 28px;
+    border: 2px solid black;
+    cursor: pointer;
+    background-color: rgba(99, 99, 99, 0.747);
+    /* z-index: 1; */
+}
+#modalNext {
+    margin: 30px;
+}
+
+#modal-image-container{
+    background-color: #161616;
+    /* padding: 10px; */
+    border: 1px solid #888;
+    width: 700px;
+    height: 500px;
+    /* height: 600px; */
+}
+
+#modal-image-display{
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 10px solid black;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    text-shadow: 2px 0 black, 0 2px black, 2px 0 black, 0 2px black;
+}
+
+.close:hover{
+    color: rgb(134, 134, 134);
 }

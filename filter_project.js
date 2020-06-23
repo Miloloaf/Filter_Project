@@ -150,7 +150,6 @@ function fadeInventoryOut() {
     let itemArray = document.getElementsByClassName("inventoryItemCard");
     for (let i = 0; i< itemArray.length; i++){
         
-
         setTimeout(() => {
             itemArray[i].style.transition = "0.5s ease-in-out"}, 100
         );
@@ -170,9 +169,7 @@ function fadeInventoryIn() {
             itemArray[i].style.opacity = "1";}, 10
         );
     }
-
 }
-
 
 function populateInventory() {
     for (let i = 1; i < itemNumber; i++){
@@ -186,18 +183,151 @@ function test(){
     document.body.addEventListener("click", () => {alert(foodImages.length);})
 }
 
-function zoomImages() {
-    // let target = event.target
-    event.target.style.backgroundSize = "800px";
+
+function foodSearch() {
+    let search = document.getElementById("inventorySearchBar").value
+    // set delay so it doesnt have to run everytime on keyup?
+    let itemArray = document.getElementsByClassName("inventoryItemCard");
+
+    let regSearch = new RegExp(search, "i");
+    
+    for (let i = 0; i< itemArray.length; i++) {
+        let card = itemArray[i];
+        let foodname = itemArray[i].querySelector(".foodTextName").innerHTML;
+
+        let match = foodname.match(regSearch);
+
+        // let match = foodname.match(search)
+
+
+        // Use Regex to figure this out
+
+        if (match == null) {
+            card.style.display = "none";
+        }
+
+        else {
+            card.style.display = "block";
+        }
+
+    }
+
+    // alert(itemArray[0]);
 
 }
 
+function closeModal() {
+    document.getElementById("myModal").style.display="none";
+}
+
+
+function openModal(foodImage) {
+    let target = event.target
+    // event.target.style.backgroundSize = "800px";
+    document.getElementById("myModal").style.display="block";
+    document.getElementById("modal-image-display").style.backgroundImage = "URL("+foodImage+")"
+    // alert(foodImage);
+}
+
+function addFoodImageEvents () {
+    for (let i = 0; i < foodImages.length; i++){
+        let currentFood = eval("item"+(i+1))["url"];
+    foodImages[i].addEventListener("click", () => {
+        openModal(currentFood);}
+    );
+    }
+}
+
+function modalPrevious(event) {
+    let currentImg = document.getElementById("modal-image-display").style.backgroundImage;
+    currentImg = currentImg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+    let displayedFoods = getDisplayedFoods();
+    let modalIndex = displayedFoods.indexOf(currentImg)
+    let newModalImg = ""
+    // Loop Around
+    if (modalIndex == 0){
+        modalIndex = displayedFoods.length - 1;
+        newModalImg = displayedFoods[modalIndex];
+        // alert(modalIndex)
+        // alert("working")
+        // alert(newModalImg)
+    }
+
+    else{
+        modalIndex -= 1
+        newModalImg = displayedFoods[modalIndex];
+        // alert(newModalImg)
+    }
+    // alert(modalIndex);
+
+    document.getElementById("modal-image-display").style.backgroundImage= "URL("+newModalImg+")"
+    // alert(newModalImg)
+
+    event.stopPropagation();
+
+}
+
+function modalNext(event){
+    let currentImg = document.getElementById("modal-image-display").style.backgroundImage;
+    currentImg = currentImg.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+    let displayedFoods = getDisplayedFoods();
+    let modalIndex = displayedFoods.indexOf(currentImg)
+    let newModalImg = ""
+
+    if (modalIndex == displayedFoods.length - 1){
+        modalIndex = 0
+        newModalImg = displayedFoods[modalIndex];
+        // alert(modalIndex)
+        // alert("working")
+        // alert(newModalImg)
+    }
+
+    else{
+        modalIndex += 1
+        newModalImg = displayedFoods[modalIndex];
+        // alert(newModalImg)
+    }
+    // alert(modalIndex);
+    document.getElementById("modal-image-display").style.backgroundImage= "URL("+newModalImg+")"
+    event.stopPropagation();
+}
+
+function getDisplayedFoods() {
+    document.getElementById("myModal").style.display="block";
+    // let allFoods = document.querySelectorAll(".inventoryItemCard")
+    let itemArray = document.getElementsByClassName("inventoryItemCard");
+    let displayedFoods = []
+    let testNum = 0
+    // alert(itemArray[0].innerHTML);
+    for (let i = 0; i < itemArray.length; i++){
+        // alert(itemArray.length)
+        // alert(1)
+        
+        let card = itemArray[i];
+        let item = eval("item"+(i+1))
+        // alert(window.getComputedStyle(card).display);
+        // alert(card.style.backgroundImage)
+        // alert(card.innerHTML)
+        // alert(card.style.display)
+        if (window.getComputedStyle(card).display === "block"){
+            // Get the ID and then just get the item URL from what you've created before
+            displayedFoods.push(item["url"]);
+            testNum += 1
+        }
+
+    }  
+    return displayedFoods
+}
+
+
 document.getElementById("aboutUsImage").addEventListener("mouseenter", moveBorder);
 document.getElementById("aboutUsImage").addEventListener("mouseleave", removeBorder);
+document.getElementById("inventorySearchBar").addEventListener("keyup", foodSearch);
+document.getElementById("myModal").addEventListener("click", closeModal);
+// document.getElementById("modalBack").addEventListener("click", function(event){
+//     event.stopPropogation();
+// });
 
-
-// function addFoodImageEvents () {
-//     for (let i = 0; i < foodImages.length; i++){
-//     foodImages[i].addEventListener("click", zoomImages )
-//     }
-// }
+// TODO
+// Add click events to buttons on Modal
+// Fix the Phone Number at the top

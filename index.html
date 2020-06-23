@@ -15,17 +15,19 @@
             <img src="https://img.icons8.com/dusk/64/000000/pancakes.png" id="logo"/>
             
             <nav id="headerNav">
-                <div class="navItem">Home</div>
-                <div class="navItem">Menu</div>
-                <div class="navItem">About</div>
-                <div class="navItem">Gallery</div>
+                <a href="" class="navItem">Home</a>
+                <a href="#ourStore"  class="navItem">Menu</a>
+                <a href="#aboutUs" class="navItem">About</a>
+                <a href="" class="navItem">Gallery</a>
             </nav>
             <div class="contact">
                 <i class="fas fa-phone"></i>
                 <div id="contactNumber">1234 567 890</div>
             </div>
 
-            <div class="pseudoItem cart">
+            <div class="cartContainer cart">
+                <div class="fas fa-shopping-basket" id="basketIcon"> </div>
+                <p>Basket</p>
 
             </div>
 
@@ -50,7 +52,7 @@
 
             <div id="ourStore">
                 <div id="ourStoreGrid">
-                    <div id="ourStoreHeader">ourStore</div>
+                    <div id="ourStoreHeader">In Store</div>
                     <div id="ourStoreFlex">
                         <div class="foodstuffFilter" id="resetFoodBtn" onClick="foodFilterResetBtn()">All</div>
                         <div class="foodstuffFilter" id="cookiesBtn" onClick="foodFilter('Cookie')">Cookies</div>
@@ -59,7 +61,7 @@
                         <div class="foodstuffFilter" id="doughnutsBtn" onClick="foodFilter('Doughnut')">Doughnuts</div>
                     </div>
                     <div id="searchBar">
-                        <input type="text" placeholder="Items"> 
+                        <input type="text" placeholder="Items" id="inventorySearchBar"> 
                         <i class="fas fa-search searchIcon"></i>
                     </div>
                 </div>
@@ -82,6 +84,17 @@
         </div>
     </div>
 
+    <div id="myModal" class="modal">
+        <!-- <div id="modalBackground"></div> -->
+        <div class="modal-content">
+            <button id="modalBack" onclick="modalPrevious(event)"><</button>
+            <div id="modal-image-container">
+                <span class="close">&times;</span>
+                <div id="modal-image-display"></div>
+            </div>
+            <button id="modalNext" onclick="modalNext(event)">></button>
+        </div>
+    </div>
     
 
     <script src="filter_project.js"></script>   
